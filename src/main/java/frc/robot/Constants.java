@@ -86,6 +86,8 @@ public class Constants {
       public static final double SetPoint = 14;
       public static final int CPR = 20;
       public static final int outputSpd = 25;
+      public static final int İnputID = 9;
+      public static final int OutputID = 10;
     }
     public class JoystickCon {
         public static final double minimum = 0.05;

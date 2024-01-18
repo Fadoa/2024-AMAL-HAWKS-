@@ -26,7 +26,13 @@ public class input extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intakesub.setMotors(IOWheel.outputSpd);
+    if(ending = true){
+        intakesub.setMotors(-IOWheel.outputSpd);
+    }else {
+        intakesub.setMotors(IOWheel.outputSpd);
+    }
+    
+    
   }
 
   // Called once the command ends or is interrupted.
