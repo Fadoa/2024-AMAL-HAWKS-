@@ -8,13 +8,16 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystem.SwearveSub;
+import frc.robot.subsystem.İntakeSub;
 import frc.robot.Constants;
 import frc.robot.Constants.JoystickCon;
 import frc.robot.commands.SwerveJoystick;
+import frc.robot.commands.input;
 public class RobotContainer {
 
   private final SwearveSub swervesub = new SwearveSub();
-
+  private final İntakeSub intakesub = new İntakeSub(9, false);
+  private final input input = new input(intakesub);
   private final XboxController xboyJoy = new XboxController(JoystickCon.port); 
   public RobotContainer() {
   
@@ -23,14 +26,14 @@ public class RobotContainer {
       swervesub,
        ()-> -xboyJoy.getLeftY() ,
         ()-> xboyJoy.getLeftX(),
-         ()-> xboyJoy.getRawAxis(JoystickCon.RotAxis),
+         ()-> xboyJoy.getRightX(),
           ()-> !xboyJoy.getAButton()));
 
     configureBindings();
   }
 
   private void configureBindings() {
-    new JoystickButton(xboyJoy,1).onTrue(swervesub.gyroReset());
+    new JoystickButton(xboyJoy,1).onTrue(input);
   }
 
   /**
