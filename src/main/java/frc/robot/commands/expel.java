@@ -1,17 +1,19 @@
 package frc.robot.commands;
+
 import frc.robot.Constants.IOWheel;
-import frc.robot.subsystem.OutputSub;
+import frc.robot.subsystem.İntakeSub;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class output extends Command {
-  private final OutputSub outputSub;
+public class expel extends Command {
+  private final İntakeSub subsystem;
+
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public output(OutputSub subsystem) {
-    outputSub = subsystem;
+  public expel(İntakeSub subsystem) {
+    this.subsystem = subsystem;
     
     addRequirements(subsystem);
   }
@@ -19,26 +21,24 @@ public class output extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("fırlatma başladi!!");
+    System.out.println("expel başladi!!!");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    outputSub.setMotors(IOWheel.outputSpd);
-    
+    subsystem.setMotors(-IOWheel.outputSpd/2);;
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    outputSub.setMotors(0);
-    System.out.println("fırlatma bitti!!");
+System.out.println("expel bitti!!!!");    
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-        return true;
-}
+    return true;
+  }
 }

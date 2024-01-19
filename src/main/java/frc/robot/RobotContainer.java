@@ -11,13 +11,14 @@ import frc.robot.Constants.JoystickCon;
 import frc.robot.commands.SwerveJoystick;
 import frc.robot.commands.input;
 import frc.robot.commands.output;
+import frc.robot.commands.expel;
 public class RobotContainer {
 
   private final SwearveSub swervesub = new SwearveSub();
 
   private final İntakeSub intakesub = new İntakeSub(Constants.IOWheel.İnputID, false);
   private final input input = new input(intakesub);
-  
+  public final expel expel = new expel(intakesub);
   private final OutputSub outputSub = new OutputSub(Constants.IOWheel.OutputID, false);
   private final output output = new output(outputSub);
   private final XboxController xboyJoy = new XboxController(JoystickCon.port); 
@@ -37,6 +38,8 @@ public class RobotContainer {
   private void configureBindings() {
     new JoystickButton(xboyJoy,1).onTrue(input);
     new JoystickButton(xboyJoy, 2).onTrue(output);
+
+    new JoystickButton(xboyJoy, 3).onTrue(expel);
   }
 
   /**
