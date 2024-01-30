@@ -1,45 +1,48 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.XboxController;
+import java.util.function.Supplier;
 
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystem.OutputSub;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+
+import frc.robot.commands.*;
 import frc.robot.subsystem.SwearveSub;
-import frc.robot.subsystem.İntakeSub;
-
+import frc.robot.subsystem.UpperSub;
 import frc.robot.Constants.JoystickCon;
 import frc.robot.commands.SwerveJoystick;
 import frc.robot.commands.input;
 import frc.robot.commands.output;
-import frc.robot.commands.expel;
-public class RobotContainer {
 
+public class RobotContainer {
+//L_armID,int R_armID ,int shooter_1ID, int shooter_2ID, int ImotorID
   private final SwearveSub swervesub = new SwearveSub();
 
-  private final İntakeSub intakesub = new İntakeSub(Constants.IOWheel.İnputID, false);
-  private final input input = new input(intakesub);
-  public final expel expel = new expel(intakesub);
-  private final OutputSub outputSub = new OutputSub(Constants.IOWheel.OutputID, false);
-  private final output output = new output(outputSub);
-  private final XboxController xboyJoy = new XboxController(JoystickCon.port); 
+  private final UpperSub upperSub = new UpperSub(10,11,12,13,9);
+  private final input input = new input(upperSub);
+  private final output output = new output(upperSub);
+  private final expel expel = new expel(upperSub);
+  private final intakepos intakepos = new intakepos(upperSub);
+  private final CommandXboxController xboyJoy = new CommandXboxController(JoystickCon.port); 
+      private final Supplier<Boolean> fieldBased = () -> true;
+  private final GenericHID dpadHid = new GenericHID(JoystickCon.port); 
   public RobotContainer() {
   
 
     swervesub.setDefaultCommand(new SwerveJoystick(
       swervesub,
-       ()-> -xboyJoy.getLeftY() ,
+       ()-> -xboyJoy.getLeftY(),
         ()-> xboyJoy.getLeftX(),
-         ()-> xboyJoy.getRightX(),
-          ()-> !xboyJoy.getAButton()));
+         ()-> xboyJoy.getRightX(),fieldBased));
 
     configureBindings();
   }
 
   private void configureBindings() {
-    new JoystickButton(xboyJoy,1).onTrue(input);
-    new JoystickButton(xboyJoy, 2).onTrue(output);
+xboyJoy.a().onTrue(expel);
+xboyJoy.b().onTrue(input);
+xboyJoy.y().onTrue(intakepos);
+xboyJoy.x().onTrue(output);
 
-    new JoystickButton(xboyJoy, 3).onTrue(expel);
   }
 
   /**

@@ -3,6 +3,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -54,6 +55,7 @@ public class SwearveSub extends SubsystemBase{
     DriveCon.Abs_encoder_RBAport_R);
 
     private AHRS gyro = new AHRS(SPI.Port.kMXP);
+    private final SwerveDriveOdometry odometer =  new SwerveDriveOdometry(DriveCon.drive_kinematics, getRotation2d(), null);
 
     public SwearveSub(){
         new Thread(() ->{
@@ -66,7 +68,7 @@ public class SwearveSub extends SubsystemBase{
     
     }
     public boolean gyroReset(){
-        
+        gyro.reset();
         return true;
     }
 
@@ -95,5 +97,9 @@ public class SwearveSub extends SubsystemBase{
         LB.setState(desiredStates[1]);
         RF.setState(desiredStates[2]);
         RB.setState(desiredStates[3]);
+    }
+
+    public void move(){
+
     }
 }

@@ -1,18 +1,19 @@
 package frc.robot.commands;
 
 import frc.robot.Constants.IOWheel;
-import frc.robot.subsystem.İntakeSub;
+import frc.robot.subsystem.UpperSub;
+
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class expel extends Command {
-  private final İntakeSub subsystem;
+  private final UpperSub subsystem;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public expel(İntakeSub subsystem) {
+  public expel(UpperSub subsystem) {
     this.subsystem = subsystem;
     
     addRequirements(subsystem);
@@ -27,7 +28,7 @@ public class expel extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    subsystem.setMotors(-IOWheel.outputSpd/2);;
+    subsystem.shoot(IOWheel.max_powah);
   }
 
   // Called once the command ends or is interrupted.

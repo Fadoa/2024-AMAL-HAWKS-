@@ -1,17 +1,16 @@
 package frc.robot.commands;
-import frc.robot.Constants.IOWheel;
-import frc.robot.subsystem.İntakeSub;
+import frc.robot.subsystem.UpperSub;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class input extends Command {
-  private final İntakeSub intakesub;
+  private final UpperSub subsystem;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public input(İntakeSub subsystem) {
-    intakesub = subsystem;
+  public input(UpperSub subsystem) {
+    this.subsystem = subsystem;
     
     addRequirements(subsystem);
   }
@@ -25,8 +24,8 @@ public class input extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  
-        intakesub.setMotors(IOWheel.outputSpd);
+  subsystem.intake(1);
+  subsystem.shoot(0.5);
     
     
   }
@@ -34,7 +33,8 @@ public class input extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intakesub.setMotors(0);
+  subsystem.intake(0);
+  subsystem.shoot(0);
     System.out.println("input bitti!!");
   }
 

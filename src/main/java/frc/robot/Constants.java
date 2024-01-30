@@ -82,13 +82,27 @@ public class Constants {
     }
 
     public class IOWheel{
-      public static final double kP = 2;
-      public static final double SetPoint = 14;
-      public static final int CPR = 20;
-      public static final int outputSpd = 25;
-      public static final int İnputID = 9;
-      public static final int OutputID = 10;
+    public static final double kP = 2;
+    public static final double SetPoint = 14;
+    public static final int CPR = 20;
+    public static final int outputSpd = 25;
+    public static final int İnputID = 9;
+    public static final int OutputID = 9999;
+
+    public static final int L_armID = 10;
+    public static final int R_armID = 11;
+
+    public static final int shooter_1ID = 12;
+    public static final int shooter_2ID = 13;
+    public static final int Aencoder = 5;
+
+    public static final double Arm_Pos_Floor = 0.584;  // intaking
+    public static final double Arm_Pos_Fender = 0.53;  // close shot
+    public static final double Arm_Pos_Beginning = 0.376;  // start config
+    public static final double Arm_Pos_Amp   = 0.325;  // amp scoring
+    public static final double max_powah = 0.5;
     }
+
     public class JoystickCon {
         public static final double minimum = 0.05;
         public static final int port = 0;
