@@ -1,11 +1,10 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-
 import frc.robot.subsystem.UpperSub;
 
-public class dpad extends Command{
-    public dpad(UpperSub subsystem) {
+public class dpadup extends Command{
+    public dpadup(UpperSub subsystem) {
     addRequirements(subsystem);
   }
 
@@ -18,10 +17,7 @@ System.out.println("dpad çalıştı!");
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-
-
-      UpperSub.getInstance().move_arm(2);
+      UpperSub.getInstance().move_arm(-2);
   }
 
   // Called once the command ends or is interrupted.

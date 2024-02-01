@@ -52,6 +52,14 @@ public SwearveMod(int driveM_ID,int driveA_ID, boolean driveM_R, boolean driveA_
     Reset_encoder();
 }
 
+public void set_angle(double power){
+    driveA.set(power);
+}
+
+public void set_drive(double power){
+    driveM.set(power);
+}
+
 public double DriveM_pos(){
     return encoderM.getPosition();
 }
@@ -93,6 +101,11 @@ state = SwerveModuleState.optimize(state, giveState().angle);
 driveM.set(state.speedMetersPerSecond / DriveCon.MaxSpeed_Meters_per_S);
 driveA.set(pidController.calculate(DriveA_pos(), state.angle.getRadians()));
 SmartDashboard.putString("Swerve no. " + Abs_encoder.getChannel() + " state", state.toString());
+}
+
+public Rotation2d getAngle()
+{
+    return Rotation2d.fromDegrees(encoderA.getPosition());
 }
 
 public void stop(){

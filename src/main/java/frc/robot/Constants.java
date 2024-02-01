@@ -26,15 +26,33 @@ public class Constants {
 
 
     public class   DriveCon{
-        public static final int LFDport = 8;
-        public static final int LBDport = 2;
-        public static final int RFDport = 6;
+
+
+        /* 
+Port 0: Swerve drive front left motor
+Port 1: Swerve drive front right motor
+Port 2: Swerve drive back left motor
+Port 3: Swerve drive back right motor
+Port 4: Swerve drive front left rotation motor
+Port 5: Swerve drive front right rotation motor
+Port 6: Swerve drive back left rotation motor
+Port 7: Swerve drive back right rotation motor
+Port 8: Shooter motor
+Port 9: Ball feeder motor
+Port 10: Intake roller motor
+
+
+
+        */
+        public static final int LFDport = 1;
+        public static final int RFDport = 2;
+        public static final int LBDport = 3;
         public static final int RBDport = 4;
 
-        public static final int LFAport = 7;
-        public static final int LBAport = 1;
-        public static final int RFAport = 5;
-        public static final int RBAport = 3;
+        public static final int LFAport = 5;
+        public static final int LBAport = 6;
+        public static final int RFAport = 7;
+        public static final int RBAport = 8;
 //encoderXXXReverse
         public static final boolean encoderLFA_Reversed = true;
         public static final boolean encoderLBA_Reversed = true;
@@ -87,7 +105,6 @@ public class Constants {
     public static final int CPR = 20;
     public static final int outputSpd = 25;
     public static final int İnputID = 9;
-    public static final int OutputID = 9999;
 
     public static final int L_armID = 10;
     public static final int R_armID = 11;
