@@ -74,10 +74,7 @@ Port 10: Intake roller motor
         public static final boolean Abs_encoder_RFAport_R = false;
         public static final boolean Abs_encoder_RBAport_R = false;
 
-        public static final double Abs_encoder_LFD_offset = -0.254;
-        public static final double Abs_encoder_LBD_offset = -1.252;
-        public static final double Abs_encoder_RFD_offset = -1.816;
-        public static final double Abs_encoder_RBD_offset = -4.811;
+
 
         public static final double Max_Accel_perS = 3;
         
@@ -105,7 +102,6 @@ Port 10: Intake roller motor
     public static final int CPR = 20;
     public static final int outputSpd = 25;
     public static final int İnputID = 9;
-
     public static final int L_armID = 10;
     public static final int R_armID = 11;
 

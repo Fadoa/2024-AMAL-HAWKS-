@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveCon;
 
+
 public class SwearveSub extends SubsystemBase{
     /* L = Left
      * R = Right
@@ -28,37 +29,25 @@ private final SwearveMod LF = new SwearveMod(
     DriveCon.LFDport,
     DriveCon.LFAport,
     DriveCon.encoderLFM_reversed,
-    DriveCon.encoderLFA_Reversed,
-    DriveCon.Abs_encoder_LFDport,
-    DriveCon.Abs_encoder_LFD_offset,
-    DriveCon.Abs_encoder_LFAport_R);
+    DriveCon.encoderLFA_Reversed);
 
     private final SwearveMod LB = new SwearveMod(
     DriveCon.LBDport,
     DriveCon.LBAport,
     DriveCon.encoderLBM_reversed,
-    DriveCon.encoderLBA_Reversed,
-    DriveCon.Abs_encoder_LBDport,
-    DriveCon.Abs_encoder_LBD_offset,
-    DriveCon.Abs_encoder_LBAport_R);
+    DriveCon.encoderLBA_Reversed);
 
     private final SwearveMod RF = new SwearveMod(
     DriveCon.RFDport,
     DriveCon.RFAport,
     DriveCon.encoderRFM_reversed,
-    DriveCon.encoderRFA_Reversed,
-    DriveCon.Abs_encoder_RFDport,
-    DriveCon.Abs_encoder_RFD_offset,
-    DriveCon.Abs_encoder_RFAport_R);
+    DriveCon.encoderRFA_Reversed);
 
     private final SwearveMod RB = new SwearveMod(
     DriveCon.RBDport,
     DriveCon.RBAport,
     DriveCon.encoderRBM_reversed,
-    DriveCon.encoderRBA_Reversed,
-    DriveCon.Abs_encoder_RBDport,
-    DriveCon.Abs_encoder_RBD_offset,
-    DriveCon.Abs_encoder_RBAport_R);
+    DriveCon.encoderRBA_Reversed);
 
     private AHRS gyro = new AHRS(SPI.Port.kMXP);
     Pose2d pose = new Pose2d(0,0,new Rotation2d());
@@ -69,14 +58,7 @@ private final SwearveMod LF = new SwearveMod(
             // Front-Left, Front-Right, Back-Left, Back-Right
             new Pose2d(0,0,new Rotation2d()) // x=0, y=0, heading=0
         );
-
-     
-
     public SwearveSub(){
-
-
-        
-
         new Thread(() ->{
             try{
                 Thread.sleep(1000);
@@ -84,9 +66,11 @@ private final SwearveMod LF = new SwearveMod(
             } catch(Exception e){
             }
         }).start();
-    
     }
-
+    public static SwearveSub getInstance(){
+        SwearveSub instance = new SwearveSub();
+        return instance;
+    }
     public void drive(double XdistanceDrive, double YdistanceDrive, double DegreePerSecond){
     //14in X, 4in Y ve 30 derece for example
         ChassisSpeeds ChassisSpeeds =  new ChassisSpeeds(Units.inchesToMeters(XdistanceDrive),Units.inchesToMeters(YdistanceDrive),Units.degreesToRadians(DegreePerSecond));
@@ -97,12 +81,22 @@ private final SwearveMod LF = new SwearveMod(
         RB.setState(swerveModuleStates[3]);
     }
     public void circular_formation(double angle){
+LF.angle_Reset();
+RF.angle_Reset();
+LB.angle_Reset();
+RB.angle_Reset();
+
 LF.set_angle(angle);
 RF.set_angle(-angle);
 LB.set_angle(angle);
 RB.set_angle(-angle);
     }
-
+    public void  angle_manipulation(double angle){
+LF.set_angle(angle);
+RF.set_angle(angle);
+LB.set_angle(angle);
+RB.set_angle(angle);
+    }
 
     public SwerveModulePosition[] getCurrentSwerveModulePositions(){
         return new SwerveModulePosition[]{

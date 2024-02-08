@@ -25,15 +25,10 @@ public class SwerveJoystick extends Command{
         this.yLimiter = new SlewRateLimiter(DriveCon.Max_Accel_perS);
         this.ALimiter = new SlewRateLimiter(DriveCon.Max_Accel_perS);
         addRequirements(swervesub);
-    
     }
-
-
     @Override
     public void initialize() {
 }
-
-
     @Override
     public void execute() {
             double xspeed = xSpd.get();

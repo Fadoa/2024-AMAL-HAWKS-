@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "run",
+      "request": "launch",
+      "mainClass": "frc.robot.run",
+      "projectName": "2024-AMAL-HAWKS-"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "frc.robot.Main",
