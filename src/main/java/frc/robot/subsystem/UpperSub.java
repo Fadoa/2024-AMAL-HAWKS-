@@ -6,6 +6,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import frc.robot.Constants.IOWheel;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class UpperSub extends SubsystemBase {
@@ -20,6 +21,7 @@ public class UpperSub extends SubsystemBase {
 
     private CANSparkMax  Imotor;
     
+    private double ArmRatio = 360/7 * 2 / 60;
     public static UpperSub getInstance(){
         UpperSub instance = new UpperSub(IOWheel.L_armID, IOWheel.R_armID, IOWheel.shooter_1ID, IOWheel.shooter_2ID, IOWheel.İnputID);
         return instance;
