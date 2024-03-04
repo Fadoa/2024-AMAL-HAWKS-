@@ -17,7 +17,7 @@ public class Constants {
   public static final class VisionConstants{
     public static double amptarget = 26.375;
     public static double speakertarger = 82;
-    public static double robotheight = 23; //this is cm!!
+    public static double robotheight = Units.metersToInches(0.325); //this is cm!!
   }
 
 
@@ -35,6 +35,9 @@ public class Constants {
     public static final double WHEEL_LOCK_TIME = 10; // seconds
   }
 
+
+
+
   public static class OperatorConstants
   {
 
@@ -46,17 +49,17 @@ public class Constants {
   }
 
     public class IOWheel{
-    public static final double kP = 2;
-    public static final double SetPoint = 14;
-    public static final int CPR = 20;
-    public static final int outputSpd = 25;
-    public static final int İnputID = 9;
-    public static final int L_armID = 10;
-    public static final int R_armID = 11;
+      public static final double kP = 0;
+      public static final double kD = 0;
+      public static final double kI = 0;
 
-    public static final int shooter_1ID = 12;
-    public static final int shooter_2ID = 13;
-    public static final int Aencoder = 5;
+    public static final int İnputID = 8;
+    public static final int L_armID = 9;
+    public static final int R_armID = 10;
+
+    public static final int shooter_1ID = 10;
+    public static final int shooter_2ID = 11;
+    public static final int Aencoder = 12;
 
     public static final double Arm_Pos_Floor = 0.584;  // intaking
     public static final double Arm_Pos_Fender = 0.53;  // close shot

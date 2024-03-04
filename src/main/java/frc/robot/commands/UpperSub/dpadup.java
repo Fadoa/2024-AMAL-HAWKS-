@@ -1,12 +1,17 @@
-package frc.robot.commands;
+package frc.robot.commands.UpperSub;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 
 import frc.robot.subsystem.UpperSub;
 
-public class dpad extends Command{
-    public dpad(UpperSub subsystem) {
-    addRequirements(subsystem);
+public class dpadup extends Command{
+
+
+  private final UpperSub subsystem;
+    public dpadup(UpperSub subsystem) {
+    this.subsystem = subsystem;
+      addRequirements(subsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -21,7 +26,9 @@ System.out.println("dpad çalıştı!");
 
 
 
-      UpperSub.getInstance().move_arm(2);
+      UpperSub.getInstance().move_arm(-0.025);
+      SmartDashboard.putNumber("values", subsystem.getPosition());
+
   }
 
   // Called once the command ends or is interrupted.
